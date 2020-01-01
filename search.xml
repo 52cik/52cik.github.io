@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[我的 2019]]></title>
+    <url>%2F2020%2F01%2F01%2F2019.html</url>
+    <content type="text"><![CDATA[2018 年一整年折腾的东西比较多，本计划19年深入和扩展的，但公司事业部调整，工作量几乎翻倍，有的时候甚至翻三倍。最直接的体现就是，19年我只写了一篇博客，当然主要是因为懒，有4篇打好了草稿但没写出来，今年哪怕再忙，也要坚持写博客，坚持自己定下的目标。 那么今年我都忙了些啥呢？]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[让 babel webpack vue 配置文件支持智能提示]]></title>
+    <url>%2F2019%2F06%2F21%2Fconfig-intelli-sense.html</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>ts</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA["再见\u2018你好\u2019"]]></title>
+    <url>%2F2019%2F01%2F01%2F2018.html</url>
+    <content type="text"><![CDATA[看了下去年总结，发现目标和愿望都实现的差不多了，甚至还做了去年都没想过的事情。去年还是更加偏向浏览器端，今年几乎都在折腾 node, docker 开发运维一体化的东西上了。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[chrome + puppeteer]]></title>
+    <url>%2F2018%2F12%2F31%2Fchrome-puppeteer.html</url>
+    <content type="text"><![CDATA[众所周知 puppeteer 模块大，是因为他包含了完整的 Chromium (~170MB Mac, ~282MB Linux, ~280MB Win) 。那么，为什么不直接调用本机 chrome 呢？]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>chrome</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node http keep-alive demo]]></title>
+    <url>%2F2018%2F12%2F03%2Fnode-http-keep-alive-demo.html</url>
+    <content type="text"><![CDATA[http keep-alive 相关资料非常多，如果深挖，那可能就长篇大论了，不合适普及，这只是一篇新手入门引导，主要讲解 node 下 http 请求的坑，以及 keep-alive 的简单使用，后续才会详细剖析原理。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ping 域名]]></title>
+    <url>%2F2018%2F12%2F01%2Fping-host.html</url>
+    <content type="text"><![CDATA[突然遇到这么个需求，需要判断是否内网环境。这个问题，如果想通了就非常简单。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[alinode 新手村生存指南]]></title>
+    <url>%2F2018%2F10%2F31%2Falinode-tutorial.html</url>
+    <content type="text"><![CDATA[alinode 是阿里云产品 Node.js 性能平台 的前身。以前是收费项目，2018年初集成到阿里云后就完全免费了，我也是第一时间接入测试并上线使用。在群里安利了不少小伙伴，但真正使用的不是很多，因为大部分都不知道 node 是怎么跑起来的。说多了都是泪，所以打算写个简单教程，让小白也可以分分钟上手 alinode 这种神兵利器。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>alinode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[通过 node 打 patch 破解 mac 应用]]></title>
+    <url>%2F2018%2F10%2F07%2Fsizeup-patch.html</url>
+    <content type="text"><![CDATA[升级 macos mojove 后，各种蛋疼，一些应用也要重新安装了。其中 SizeUp 这款工具也失效了，找破解版的时候发现了一篇2016年3月的文章。照着流程操作，竟然到现在还有用，单字节爆破，简单粗暴的方法，我喜欢。 于是乎写成了 node 模块，方便自己和一些朋友使用。有钱的支持正版，我这样的穷逼，自己写工具。。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>patch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[从 Docker 镜像中提取 Dockerfile]]></title>
+    <url>%2F2018%2F10%2F01%2Fdockerfile-from-image.html</url>
+    <content type="text"><![CDATA[其实上篇已经详细介绍了如何从 alinode 官方镜像中提取 Dockerfile 的完整过程。但在提取的时候，我写了个工具，方便以后使用，既然写了，就分享下。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[alinode 官方镜像分析并提取 Dockerfile]]></title>
+    <url>%2F2018%2F10%2F01%2Fdocker-alinode-dockerfile.html</url>
+    <content type="text"><![CDATA[上篇介绍了 alinode 自定义封装，但毕竟不是官网原配置，群里也有人吐槽过官网镜像太大。所以这次分析官网镜像，看看到底为什么这么多大，顺便提取官网 Dockerfile。]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>alinode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker 封装 alinode]]></title>
+    <url>%2F2018%2F08%2F31%2Fdocker-alinode.html</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker 上线部署踩坑小记]]></title>
+    <url>%2F2018%2F08%2F31%2Fdocker-accident.html</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用 Generator 提升 matchAll 体验]]></title>
+    <url>%2F2018%2F07%2F31%2Fgenerator-matchall.html</url>
+    <content type="text"><![CDATA[在 js 中匹配所有往往都是 replace 中回调处理的。虽然能达到目的，但其实不够优雅，而且不能中断。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用 Symbol.match 优化正则匹配]]></title>
+    <url>%2F2018%2F07%2F29%2Fsymbol-match.html</url>
+    <content type="text"><![CDATA[如果想从 &#39;uid: 123&#39; 字符串中匹配出 123 我通常会 &#39;uid: 123&#39;.match(/uid: (\d+)/)[1]。但如果字符串不符合规范，正则会返回 null 导致 [1] 操作报错 Uncaught TypeError: Cannot read property &#39;1&#39; of null。所以我会 (&#39;uid: null&#39;.match(/uid: (\d+)/) || 0)[1] 来防止报错。 但这样很不优雅。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[npm 镜像科普]]></title>
+    <url>%2F2018%2F06%2F30%2Fnpm-mirrors.html</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Express async 全局错误处理]]></title>
+    <url>%2F2018%2F06%2F29%2Fexpress-async-errors.html</url>
+    <content type="text"><![CDATA[之前两篇 Promise 错误处理其实已经描述了大部分场景下的错误捕获问题。结合 async/await 可以获得很好的开发体验。express 也可以使用 async/await 来提升开发体验，但必须 try/catch 所有 await 才行。那么今天的课题就是如何优雅的在 express 中使用 async/await 来提升开发体验。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>promise</tag>
+        <tag>express</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[koa2 中的错误处理以及中间件设计原理]]></title>
+    <url>%2F2018%2F05%2F27%2Fkoa-error.html</url>
+    <content type="text"><![CDATA[其实这不是一个问题，因为就 koa2 而言，他已经帮我做好了统一错误处理入口 app.onerror 方法。我们只要覆盖这个方法，就可以统一处理包括 中间件，事件，流 等出现的错误。 但我们始终会看到 UnhandledPromiseRejectionWarning: 类型的错误。当然，这不一定就是 koa 导致，有可能是其他异步未处理错误导致的，但这都不重要。让我们来看看 koa 是如何处理全局错误的。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>promise</tag>
+        <tag>koa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[翻译 | Bash 扩展通配符 (ExtGlob)]]></title>
+    <url>%2F2018%2F05%2F02%2Fbash-extended-globbing.html</url>
+    <content type="text"><![CDATA[英文原文: Bash Extended Globbing作者: Mitch Frazier摘要: Bash 扩展通配符的科普文章。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>glob</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Promise 并发控制]]></title>
+    <url>%2F2018%2F04%2F30%2Fpromise-concurrency-limited.html</url>
+    <content type="text"><![CDATA[Promise 并发，往往都直接 Promise.all 但如果我想控制并发为 5 怎么破？]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Promise 错误处理]]></title>
+    <url>%2F2018%2F04%2F30%2Fpromise-error.html</url>
+    <content type="text"><![CDATA[Promise 为 js 的异步流程控制处理迈出了一大步。但我一直没用好错误处理。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[简单爬虫实例 - 爬取B站看板娘服装资源]]></title>
+    <url>%2F2018%2F03%2F30%2Fnode-got-crawler.html</url>
+    <content type="text"><![CDATA[最近又在网上看到一个 node 爬妹纸图的东西，去看了下源码，写的其实太啰嗦了。其实 node + got + async/await 才是王道。 由于之前做了个 B站看板娘集合 的东西，所以就写个爬虫爬了下直播间。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>crawler</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[分分钟写一个 rollup 小插件]]></title>
+    <url>%2F2018%2F03%2F29%2Fcreate-rollup-plugin.html</url>
+    <content type="text"><![CDATA[rollup，别问我这是什么鬼，自己去百度不会。// 强行单押rollup，真的好用到飞，打包es6模块必备。// 单押x4 勒是雾都！]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>rollup</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在 vscode 中统一 vue 编码风格]]></title>
+    <url>%2F2018%2F02%2F20%2Fvscode-vue.html</url>
+    <content type="text"><![CDATA[vetur 很多人知道，但在 vscode 下没办法格式化 .vue 里的 html, js 很是头疼，代码风格无法统一。所以不少人直接拆分开，然后在 .vue 中引入，虽然方法很好，但这有违 .vue 单文件组件的初衷。 本文详细介绍 vscode 下使用 vetur + prettier + eslint 来统一 vue 编码风格。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[webpack3 编译兼容 IE8- 的正确姿势]]></title>
+    <url>%2F2017%2F12%2F20%2Fwebpack3-ie8.html</url>
+    <content type="text"><![CDATA[接上一篇《关于新版本 webpack gulp 兼容 IE8- 的正确姿势》踩了几次坑后，重新整理下方案。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 请求使用动态 hosts]]></title>
+    <url>%2F2017%2F12%2F15%2Fnode-request-hosts.html</url>
+    <content type="text"><![CDATA[开发中使用 hosts 司空见惯，但如果一个需求，用户表单输入 hosts 后台使用这个 hosts 去请求，如何用正确的姿势去请求呢？]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[塞尔达传说 荒野之息 DLC 更新失败后]]></title>
+    <url>%2F2017%2F12%2F10%2Fzelda-dlc.html</url>
+    <content type="text"><![CDATA[塞尔达 DLC2 都已经更新了，让 1 都没购买的我情何以堪。然后淘宝淘了 $20 给 eShop 充上之后就购买了 DLC，接下来就是等待下载了。 PS: 淘宝 $10 = ￥60，有的店新用户￥58。PS: 最好别在美服买游戏，尽量日服购买，否则，欲哭无泪。PS: 2019-03月份，淘宝 eShop 点卡打价格战，最低都到 4.3 汇率了，但几乎没货，我是 4.65 汇率囤了 $100。]]></content>
+      <categories>
+        <category>switch</category>
+      </categories>
+      <tags>
+        <tag>zelda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript in VS Code]]></title>
+    <url>%2F2017%2F11%2F07%2Fjavascript-in-vscode.html</url>
+    <content type="text"><![CDATA[众所周知 VS Code 是借助 d.ts 对 js/ts 进行 智能感知(IntelliSense) 精准提示的。官方维护着一个庞大的 DefinitelyTyped 囊括了流行的模块的 d.ts。所以你会发现不论是 js 还是 ts 都可以为流行库进行 智能感知。如果是 ts 项目，也许大家都会操作，但 js 项目想自定义 d.ts 实现 智能感知 怎么破？]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js Date 操作之神奇的 date]]></title>
+    <url>%2F2017%2F10%2F11%2Fjs-date-month.html</url>
+    <content type="text"><![CDATA[Date 对象算是较常用的对象之一，但很多人完全不会操作，就算一些简单的操作也用 moment 而不自己尝试一下。 本次分享下 Date 中的 date 使用技巧，希望能给大家启发。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>date</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac 下将当前目录添加到环境变量中]]></title>
+    <url>%2F2017%2F09%2F07%2Fadd-curr-dir-to-env.html</url>
+    <content type="text"><![CDATA[对于习惯 win 的用户，当前目录优先级最高，感觉本应如此，甚至都没办法在 PATH 中修改优先顺序。但对于 linux/unix 用户来说，根本就没这回事，导致每次执行当前目录下的命令都需要加上 ./ 前缀，非常麻烦。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[废弃] 关于新版本 webpack gulp 兼容 IE8- 的正确姿势]]></title>
+    <url>%2F2017%2F04%2F13%2Fwebpack-ie8.html</url>
+    <content type="text"><![CDATA[PS: 不推荐使用这个方式，推荐使用《webpack3 编译兼容 IE8- 的正确姿势》 最近在使用 webpack 和 gulp 的时候发现压缩后的 js 在 IE8- 下各种报错，蛋蛋的忧桑。于是花了几个小时整理了下问题及解决方案。 PS: webpack 的 es3ify-loader 插件因为所在层面不同 (解析层之后才是优化层，如压缩等)，所以问题依旧。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 项目环境变量兼容及入口分离]]></title>
+    <url>%2F2017%2F03%2F30%2Fnode-env.html</url>
+    <content type="text"><![CDATA[对于跨平台来说，环境变量设置是个大坑，这篇文章来讲讲如何剥离环境变量依赖以及入口文件分离问题。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[记一次 gitlab 与老的 nginx 冲突处理]]></title>
+    <url>%2F2017%2F02%2F08%2Fclash-of-nginx-and-gitlab.html</url>
+    <content type="text"><![CDATA[今天在搭建 lnmp + gitlab 环境的时候遇到了 nginx 冲突。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[永别2016，你好2017]]></title>
+    <url>%2F2017%2F01%2F01%2F2017.html</url>
+    <content type="text"><![CDATA[回首2016年，感觉有点坎坷，技术上也没啥大的突破，虽然这一年js社区非常热闹，但我啥都没折腾，就连博客也都半年没写了，感觉都要被淘汰了。。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[async 更优雅异步体验]]></title>
+    <url>%2F2016%2F07%2F12%2Fasync.html</url>
+    <content type="text"><![CDATA[上一篇《让 Generator 自启动》介绍了通过起动器让 Generator 跑起来，而本篇采用 async 实现更优雅的异步编程。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>async</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[让 Generator 自启动]]></title>
+    <url>%2F2016%2F07%2F11%2Fgenerator-co.html</url>
+    <content type="text"><![CDATA[此前只是简单使用而没有真正的去研究 Generator，这次要好好折腾下这货。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>generator</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js 判断一组日期是否是连续的]]></title>
+    <url>%2F2016%2F07%2F10%2Fconsecutive-dates.html</url>
+    <content type="text"><![CDATA[这是群里一朋友问的问题，当时我说判断下 day 是否相邻即可，后来细想，发现完全不对。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>date</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[我的 GitHub 100 连击]]></title>
+    <url>%2F2016%2F05%2F05%2Fgithub-streak-100.html</url>
+    <content type="text"><![CDATA[终于达成 gayhub 的第一个100连击了，感觉自己整个人颜色都不一样了，完全蜕变了。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（十四）- 学习感悟]]></title>
+    <url>%2F2016%2F05%2F04%2Fgo-notes-summary.html</url>
+    <content type="text"><![CDATA[用了两周时间，硬着头皮把圣经看完了，对 go 大致有了一个比较全面的了解了。但是没深入，只是语法层面的会用而已，简单说就是会写例子，但是不会实际应用这种程度。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（十三）- 底层编程]]></title>
+    <url>%2F2016%2F05%2F03%2Fgo-notes-unsafe.html</url>
+    <content type="text"><![CDATA[go 隐藏了底层实现细节，不用像c那样直接操作底层，也不用手动回收垃圾，代码更容易预测和理解，程序也不容易崩溃。但有时候为了更好的性能或者go无法实现的操作，就需要挣脱go的这些束缚，直接进行底层编程了。 注: 底层编程属于黑魔法，虽然可能功能很强大，但是也容易误伤到自己。三思而行]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[万恶的中国联通宽带]]></title>
+    <url>%2F2016%2F05%2F02%2Fchinaunicom.html</url>
+    <content type="text"><![CDATA[其实比他更扯蛋的宽带是长城宽带，我就不多说了，谁用谁知道。 请勿当做教程，因为最后貌似是他们的问题，路由器拨号连接的。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（十二）- 反射]]></title>
+    <url>%2F2016%2F05%2F01%2Fgo-notes-reflect.html</url>
+    <content type="text"><![CDATA[反射是可以更新未知类型变量值的方法。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（十一）- 测试]]></title>
+    <url>%2F2016%2F04%2F30%2Fgo-notes-test.html</url>
+    <content type="text"><![CDATA[测试能保证程序的行为或结果是我们预期的，而自动化测试更是能让我们快速迭代。Go 自带了测试工具，以及一套简单的测试规范。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（十）- 包和工具]]></title>
+    <url>%2F2016%2F04%2F29%2Fgo-notes-pkg-tool.html</url>
+    <content type="text"><![CDATA[现在的程序开发都基于各种包或模块，可能一个程序我们写几行代码即可，其他功能都可以通过开源的包来实现。但是 go 的包感觉也是比较烂的，不像 node 的 npm 那样 semver（语义化版本） 管理模块，而是通过 git 手动管理。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（九）- 基于共享变量的并发]]></title>
+    <url>%2F2016%2F04%2F28%2Fgo-notes-concurrency.html</url>
+    <content type="text"><![CDATA[并发其实在很多情况下都是不安全的，特别是写数据的时候，所以需要深入了解并发，解决他们不安全因素。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Chrome 监听 console 打开]]></title>
+    <url>%2F2016%2F04%2F27%2Fchrome-console-open.html</url>
+    <content type="text"><![CDATA[这个算是 Chrome only 其他的我没测试，也不想测试。因为我的控制台脚本仅仅在 Chrome 下加载。如果你需要全平台，那么这肯定不是你需要的结果。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（八）- Goroutines和Channels]]></title>
+    <url>%2F2016%2F04%2F26%2Fgo-notes-goroutine.html</url>
+    <content type="text"><![CDATA[多线程是我一直没触碰过的领域，特别是js一直都是单线程，不过h5里有个 Worker 不过我还没实际用过。Go 提供了 Goroutines 实现并发程序，而且使用简单，他和传统线程还是有区别的，具体我也不知道，还没看到。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（七）- 接口]]></title>
+    <url>%2F2016%2F04%2F25%2Fgo-notes-interface.html</url>
+    <content type="text"><![CDATA[接口类型是对其它类型行为的抽象和概括，我的理解是，可以更方便的处理不同类型数据。在 js 里没有特别的明确数据类型，比如 1 + &#39;2&#39; 是 &#39;12&#39; 而 1 - &#39;2&#39; 是 -1，在 go 里这样的语句是错误的。 接口的概念非常多，小章节是之前每个章节的2，3倍。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（六）- 方法]]></title>
+    <url>%2F2016%2F04%2F24%2Fgo-notes-method.html</url>
+    <content type="text"><![CDATA[OOP 在 go 中的应用感觉怪怪的，不过还好比较简单，而且跟传统的 OO 思想完全不同，感觉毁三观。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（五）- 函数]]></title>
+    <url>%2F2016%2F04%2F23%2Fgo-notes-func.html</url>
+    <content type="text"><![CDATA[函数在任何语言里都是非常重要的角色，特别是 go 或 js ，函数作为一等公民的存在，我们必须把它嚼烂。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（四）- 复合数据类型]]></title>
+    <url>%2F2016%2F04%2F22%2Fgo-notes-complex-types.html</url>
+    <content type="text"><![CDATA[本章主要介绍了四种类型：数组、slice、map和结构体。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（三）- 基础数据类型]]></title>
+    <url>%2F2016%2F04%2F21%2Fgo-notes-basic-types.html</url>
+    <content type="text"><![CDATA[Go 语言将数据类型分为四类：基础类型、复合类型、引用类型和接口类型。本章介绍基础数据类型，包括 整型，浮点，复数，布尔，字符串，常量。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（二）- 程序结构]]></title>
+    <url>%2F2016%2F04%2F20%2Fgo-notes-structure.html</url>
+    <content type="text"><![CDATA[本章介绍了命名，关键词，声明，赋值，类型，包，作用域等概念，但主要介绍的只是程序结构和声明。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（一）- 入门]]></title>
+    <url>%2F2016%2F04%2F19%2Fgo-notes-start.html</url>
+    <content type="text"><![CDATA[我是跟着《Go 语言圣经》学习 go 的，所以简单记录下学习笔记。第一章内容就是简单的语言入门预览，书上给了几个有用的例子，直观的展示了 go 的语法，结构，功能等特性。例如：导入包，定义变量，调用函数，第三方包的安装和使用等。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go 学习笔记（零）- Sublime Text 配置]]></title>
+    <url>%2F2016%2F04%2F18%2Fgo-sublime.html</url>
+    <content type="text"><![CDATA[其实 st 不是写 go 的最佳编辑器，网上大家都推荐 vscode 或 idea。但我测试 vscode 后发现我无法爱上它。至于 idea 则太重了，而我只是学习下 go 打算做工具语言用的，所以还是用我最喜欢的 st 写吧，不过开始之前要先配置下我们的 st 让它具有自动添加包，自动格式化，自动补全，跳转定义功能。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Should.js 的中文打开方式]]></title>
+    <url>%2F2016%2F03%2F30%2Fshouldjs-cn.html</url>
+    <content type="text"><![CDATA[我对 @TJ 大神的崇拜已经到了盲目的程度，同事经常问我为什么跪着看代码。。。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js 生成 yyyy-mm-dd 格式的逼格姿势]]></title>
+    <url>%2F2016%2F03%2F25%2Fjs-date-format.html</url>
+    <content type="text"><![CDATA[关于 js 生成 yyyy-mm-dd 格式，往往都会采取手动拼接，一般不愿意为了小功能而去动用 momentjs 之类的插件。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>date</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Composer 学习笔记 - 安装]]></title>
+    <url>%2F2016%2F03%2F24%2Fcomposer.html</url>
+    <content type="text"><![CDATA[Composer 是 php 上最优秀的依赖管理工具，所以作为一个文艺的 phper 必须要 get 起来。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>composer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[rollup 学习笔记]]></title>
+    <url>%2F2016%2F03%2F11%2Frollup.html</url>
+    <content type="text"><![CDATA[这是一款号称下一代 ES2015 模块打包工具（bundler），通过 Tree-shaking 技术，抽取式打包代码。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>rollup</tag>
+        <tag>bundler</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[YAML 学习笔记]]></title>
+    <url>%2F2016%2F02%2F17%2Fyaml.html</url>
+    <content type="text"><![CDATA[最近看到越来越多的 YAML 的东西，所以打算看下 YAML 语法。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>yaml</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - Buffer]]></title>
+    <url>%2F2016%2F01%2F27%2Flearn-node-buffer.html</url>
+    <content type="text"><![CDATA[Buffer 是 node 用于处理各种数据流或文件系统数据的，而且一个 Buffer 实例大小是不可变的。Buffer 是一个全局类，不需要 require(&#39;buffer&#39;) 引入。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - EventEmitter]]></title>
+    <url>%2F2016%2F01%2F26%2Flearn-node-EventEmitter.html</url>
+    <content type="text"><![CDATA[都说 Node.js 是一个事件驱动，非阻塞式 I/O 的模型，基于 Google V8 引擎的 Javascript 运行环境。虽然不知道此事件是不是彼事件，但至少 node 里的事件都是 EventEmitter 的实例。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[现在的人都忘了如何学习]]></title>
+    <url>%2F2016%2F01%2F14%2Fhow-to-learn.html</url>
+    <content type="text"><![CDATA[老是看到很多人说，我看了很多书，但是不会写。或者是这个我之前研究过的，但是现在忘记了，又或者，这一年都没什么长进，他们说的我都懂，但我不会做。等等类似的问题，各种技术群里几乎天天有人说。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac 替换应用图标并刷新图标缓存]]></title>
+    <url>%2F2016%2F01%2F04%2Fmac-icon.html</url>
+    <content type="text"><![CDATA[用了一年 mac 了，直到今天才发现替换应用图标和刷新图标缓存如此简单。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[php json 格式控制]]></title>
+    <url>%2F2015%2F12%2F23%2Fphp-json-format.html</url>
+    <content type="text"><![CDATA[关于 json 这个问题，陆陆续续有新手朋友找我问，比如为什么我输出的是 {&quot;1&quot;:&quot;item1&quot;,&quot;2&quot;:&quot;item2&quot;,&quot;3&quot;:&quot;item3&quot;} 而不是 [&quot;item1&quot;,&quot;item2&quot;,&quot;item3&quot;]。]]></content>
+      <categories>
+        <category>后台技术</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac 下 hosts 慢的解决方案]]></title>
+    <url>%2F2015%2F12%2F21%2Fmac-hosts.html</url>
+    <content type="text"><![CDATA[修改 hosts 差不多是 web 码农的本能吧，修改一个域名指向本机或者测试服务器用来开发调试。但是我最近遇到了奇坑，就这几天的事情。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - Modules 模块加载系统 (2)]]></title>
+    <url>%2F2015%2F12%2F14%2Flearn-node-modules-module.html</url>
+    <content type="text"><![CDATA[上一篇讲了模块是如何被寻找到然后加载进来的，这篇则是如何导出属性方法以及自定义模块后缀等一系列模块问题。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - Modules 模块加载系统 (1)]]></title>
+    <url>%2F2015%2F12%2F11%2Flearn-node-modules-path.html</url>
+    <content type="text"><![CDATA[用了这么久的 require，但却没有系统的学习过 node 的模块系统，今天就翻官方文档系统的学习下。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go的初体验]]></title>
+    <url>%2F2015%2F12%2F08%2Fgo.html</url>
+    <content type="text"><![CDATA[go 一个神奇的语言，看到这么多大神都开始玩 go，那作为有理想的小菜也不能落下。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[语义化版本]]></title>
+    <url>%2F2015%2F12%2F05%2Fsemver.html</url>
+    <content type="text"><![CDATA[之前就觉得为什么 github 上的大部分东西都是 1.0.1、1.11.1 甚至 0.11.1 这种奇葩的版本。为什么 jQuery 1.9.9 之后不是 2.0.0 而是 1.10.0。而且在 npm init 的时候不能输入 1 或 1.0 这样的版本，就算你手动修改了 package.json 里的版本之后，就无法安装其他模块，报 Invalid version: &quot;1.0&quot; 无效版本错误。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>semver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - path 处理]]></title>
+    <url>%2F2015%2F12%2F04%2Flearn-node-path.html</url>
+    <content type="text"><![CDATA[path 模块是 node 用于整理、转换、合并路径的神器，只要是路径问题，都可以交给它处理。但它仅仅是处理路径字符串，而不会去坚持或处理文件。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node 学习笔记 - fs 文件操作]]></title>
+    <url>%2F2015%2F12%2F03%2Flearn-node-fs.html</url>
+    <content type="text"><![CDATA[最近看到群里不少大神都开始玩 node 了，我感觉跟他们步伐越来越大了，为了追逐他们的步伐，必须把 node 技能 get 起来。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[废弃] Sublime Text 之 Package Control 镜像]]></title>
+    <url>%2F2015%2F11%2F24%2Fpackage-control.html</url>
+    <content type="text"><![CDATA[这阵子经常有朋友跟我说 Sublime Text 下的 Package Control 无法安装，或者是安装后无法安装插件，甚至连插件列表都加载不出来。然后，就没有然后了。。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[删除 windows 下 node_modules 过深的目录]]></title>
+    <url>%2F2015%2F11%2F13%2Fnode-modules-del.html</url>
+    <content type="text"><![CDATA[说到 node 的模块，确实既好用又蛋疼。相信无数人吐槽 node_modules 目录结构的设计了。确实，npm 没有处理好 peerDependencies 的概念，不仅重复安装了模块，而且嵌套层次太深。我觉得可以在安装依然的时候分析相同模块，安装到合适的层次，但是却面临一个相同模块的不同版本问题。反正确实挺纠结的，我这样的脑子不够用。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Promise 学习笔记 - 时间支配者]]></title>
+    <url>%2F2015%2F11%2F08%2Fpromise.html</url>
+    <content type="text"><![CDATA[你们别拦着我，我要把学习笔记都上交给国家。。完。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[replace 替换全部的正确姿势]]></title>
+    <url>%2F2015%2F11%2F06%2Freplace-all.html</url>
+    <content type="text"><![CDATA[关于字符串替换问题，其实是个很简单的问题，但却也不那么简单，至少对于很多新手而言，全局替换一直是个坑。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[废弃] brew-cask 之本地更新 node]]></title>
+    <url>%2F2015%2F11%2F04%2Fbrew-cask-local.html</url>
+    <content type="text"><![CDATA[起因今天 Node v4.2.2 (LTS) 发布，什么是 LTS 呢，百度之 Long Term Support：长时间支持版本（三年），一般的版本支持为18个月。所以我打算更新下，其实前几天刚刚折腾了node5后来换回了4.x版本，我这样的小菜暂时先玩玩4.x好了。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>cask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[split 方法的正确使用姿势]]></title>
+    <url>%2F2015%2F11%2F02%2Fsplit-skill.html</url>
+    <content type="text"><![CDATA[通过 js 获取 QueryString (location.search部分) 参数很常见，网上代码也满天飞。不过现在的框架，基本上都通过路由伪静态了，把以前的 QueryString 变成了pathname (location.pathname部分) 路径参数了。 例如：/index.html?id=22&amp;name=abc很多框架都是渲染为 /index/id/22/name/abc.html]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sublime Text 之运行 ES6 (基于babel)]]></title>
+    <url>%2F2015%2F10%2F21%2Fsublime-text-run-es6.html</url>
+    <content type="text"><![CDATA[之前在博客园里写过一篇《Sublime Text 之运行 js 方法》，这篇算是续篇了，因为就是改个字符串而已。 直接进入正文吧。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello Hexo - 新的开始]]></title>
+    <url>%2F2015%2F10%2F16%2Fhello-hexo.html</url>
+    <content type="text"><![CDATA[写了一年的博客园，其实博客园挺好的，唯一不方便的就是不是自己的服务器，很多东西不能随便来，所以才在用 Hexo 在 GitHub 上搭建了本博客。 用 Hexo 搭建博客，真的超方便，但是也有点小麻烦。下面，我就介绍下我折腾的步骤吧。]]></content>
+      <categories>
+        <category>狂人日妓</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>

@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/assets/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/assets/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/assets/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.5.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="alinode 官方镜像分析并提取 Dockerfile">
+<meta name="keywords" content="docker, alinode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="alinode 官方镜像分析并提取 Dockerfile">
+<meta property="og:url" content="http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html">
+<meta property="og:site_name" content="Web技术试炼地">
+<meta property="og:description" content="alinode 官方镜像分析并提取 Dockerfile">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-01T15:03:49.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="alinode 官方镜像分析并提取 Dockerfile">
+<meta name="twitter:description" content="alinode 官方镜像分析并提取 Dockerfile">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Web技术试炼地" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>alinode 官方镜像分析并提取 Dockerfile | Web技术试炼地</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Web技术试炼地</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">热爱技术的教主大人</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-友链">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-id-card"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="楼教主">
+      <meta itemprop="description" content="自称楼教主的前端小学生">
+      <meta itemprop="image" content="//q.qlogo.cn/qqapp/100229475/2EBF2E8D6BCE97787D5F3CDC6DDBECED/160">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Web技术试炼地">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">alinode 官方镜像分析并提取 Dockerfile
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-01 19:36:00" itemprop="dateCreated datePublished" datetime="2018-10-01T19:36:00+08:00">2018-10-01</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/运维/" itemprop="url" rel="index"><span itemprop="name">运维</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/01/docker-alinode-dockerfile.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/10/01/docker-alinode-dockerfile.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上篇介绍了 alinode 自定义封装，但毕竟不是官网原配置，群里也有人吐槽过官网镜像太大。<br>所以这次分析官网镜像，看看到底为什么这么多大，顺便提取官网 Dockerfile。</p>
+<a id="more"></a>
+<h2 id="官网镜像介绍"><a href="#官网镜像介绍" class="headerlink" title="官网镜像介绍"></a>官网镜像介绍</h2><p>目前有 <code>3</code> 和 <code>3-alpine</code> 两种版本。<br><code>3</code> 镜像 732MB，为什么这么大？<br><code>3-alpine</code> 我提 issue 后正常了，仅仅 71.5MB。</p>
+<p>其实无关大小，大家用镜像，无非图个省事，但没有 Dockerfile 用的人也很慌。<br>上一篇也提到了，官网有个一年多没更新过的 Dockerfile，其实也能用。</p>
+<p>我们还是来着重分析下 <code>3</code> 版本，看看为什么这么大。</p>
+<h2 id="docker-image-分析"><a href="#docker-image-分析" class="headerlink" title="docker image 分析"></a>docker image 分析</h2><p>逆向分析镜像有两种方法。<br>一种是 <code>docker history</code> 可以看到每一层的配置，但包括了从底层镜像开始的所有配置，所以会很杂乱。<br>另一种是 <code>docker save</code> 导出 tar 包，解压后，不仅可以得到每一层的配置，还能详细的看到每一层的文件增删情况。</p>
+<p>这里我们讨论 <code>docker history</code> 方法，因为够用了。</p>
+<h2 id="docker-history"><a href="#docker-history" class="headerlink" title="docker history"></a>docker history</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">history</span> --no-trunc registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3 &gt; history.md</span><br></pre></td></tr></table></figure>
+<p>这里加了 <code>--no-trunc</code> 参数，不截断数据，并且导出到 <code>history.md</code> 文件中。</p>
+<blockquote>
+<p>ps: 由于 <code>--no-trunc</code> 的结果太长，不合适博客展示，所以这里贴了下截断后的数据。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">e649e72af9a2        2 weeks ago         /bin/sh -c #(nop)  ENTRYPOINT [&quot;/start-agent…   0B                  </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop) COPY file:cdecc22ff2ae3835…   178B                </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop) COPY file:2446f9972d7e6dfa…   885B                </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c ENABLE_NODE_LOG=NO npm install -g…   8.18MB              </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c curl -SLO &quot;http://alinode.aliyun.…   54.2MB              </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop)  ENV HOME=/root               0B                  </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop)  ENV NODE_LOG_DIR=/tmp        0B                  </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop)  ENV ENABLE_NODE_LOG=YES      0B                  </span><br><span class="line">&lt;missing&gt;           2 weeks ago         /bin/sh -c #(nop)  ENV ALINODE_VERSION=3.12.0   0B                  </span><br><span class="line">&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  CMD [&quot;node&quot;]                 0B                  </span><br><span class="line">&lt;missing&gt;           3 weeks ago         /bin/sh -c set -ex   &amp;&amp; for key in     6A010…   4.5MB               </span><br><span class="line">&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  ENV YARN_VERSION=1.9.4       0B                  </span><br><span class="line">&lt;missing&gt;           3 weeks ago         /bin/sh -c ARCH= &amp;&amp; dpkgArch=&quot;$(dpkg --print…   53.8MB              </span><br><span class="line">&lt;missing&gt;           3 weeks ago         /bin/sh -c #(nop)  ENV NODE_VERSION=8.12.0      0B                  </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c set -ex   &amp;&amp; for key in     94AE3…   137kB               </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c groupadd --gid 1000 node   &amp;&amp; use…   335kB               </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c set -ex;  apt-get update;  apt-ge…   320MB               </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c apt-get update &amp;&amp; apt-get install…   123MB               </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c set -ex;  if ! command -v gpg &gt; /…   0B                  </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c apt-get update &amp;&amp; apt-get install…   41.1MB              </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c #(nop)  CMD [&quot;bash&quot;]                 0B                  </span><br><span class="line">&lt;missing&gt;           4 weeks ago         /bin/sh -c #(nop) ADD file:8d73a09e59fe50289…   127MB</span><br></pre></td></tr></table></figure>
+<p><code>IMAGE</code> 这列，全部丢失，只有最后一层有个 id。<br><code>CREATED BY</code> 是我们关注的主体，其他列都可以忽略。<br>当然你也可以看看 <code>SIZE</code> 太大的层可以去优化下命令。</p>
+<p>在 <code>CREATED BY</code> 列中，全部是 <code>/bin/sh -c</code> 开头，但有的有 <code>#(nop)</code> 有的没有，这是为什么？<br>我也不知道，但仔细观察，其实可以发现没 <code>#(nop)</code> 是 <code>RUN</code> 指令的配置。</p>
+<p>那么简单了，所有 <code>/bin/sh -c #(nop)</code> 删除，剩下的所有 <code>/bin/sh -c</code> 改成 <code>RUN</code> 就是我们要的 dockerfile 配置了。<br>再观察下发现好像最下面的是底层镜像配置，所以应该将结果倒序下才是我们要的 dockerfile。</p>
+<p>这里写了个 bash 来辅助我们输出结果</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">history</span> \</span><br><span class="line">  --no-trunc \</span><br><span class="line">  --format <span class="string">"&#123;&#123;.CreatedBy&#125;&#125;"</span> \ <span class="comment"># 只输出 CREATED BY 字段</span></span><br><span class="line">  registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3 \</span><br><span class="line">  | perl -e <span class="string">'print reverse &lt;&gt;'</span> \ <span class="comment"># 倒序</span></span><br><span class="line">  | sed <span class="string">'s/\/bin\/sh -c #(nop) //'</span> <span class="comment"># 删除 #(nop)</span></span><br><span class="line">  | sed <span class="string">'s/\/bin\/sh -c /RUN /'</span> \ <span class="comment"># 替换 RUN 指令</span></span><br><span class="line">  &gt; dockerfile</span><br></pre></td></tr></table></figure>
+<p>保存为 <code>history.sh</code> 执行 <code>sh history.sh</code> 得到 dockerfile 文件，内容如下。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ADD</span><span class="bash"> file:8d73a09e59fe50289a6d0c019302aefe2e00ac6411e82404389c0c83f50cf08a <span class="keyword">in</span> / </span></span><br><span class="line"><span class="bash">CMD [<span class="string">"bash"</span>]</span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends   ca-certificates   curl   netbase   wget  &amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex;  <span class="keyword">if</span> ! <span class="built_in">command</span> -v gpg &gt; /dev/null; <span class="keyword">then</span>   apt-get update;   apt-get install -y --no-install-recommends    gnupg    dirmngr   ;   rm -rf /var/lib/apt/lists/*;  <span class="keyword">fi</span></span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends   bzr   git   mercurial   openssh-client   subversion     procps  &amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex;  apt-get update;  apt-get install -y --no-install-recommends   autoconf   automake   bzip2   dpkg-dev   file   g++   gcc   imagemagick   libbz2-dev   libc6-dev   libcurl4-openssl-dev   libdb-dev   libevent-dev   libffi-dev   libgdbm-dev   libgeoip-dev   libglib2.0-dev   libjpeg-dev   libkrb5-dev   liblzma-dev   libmagickcore-dev   libmagickwand-dev   libncurses5-dev   libncursesw5-dev   libpng-dev   libpq-dev   libreadline-dev   libsqlite3-dev   libssl-dev   libtool   libwebp-dev   libxml2-dev   libxslt-dev   libyaml-dev   make   patch   xz-utils   zlib1g-dev     $(    <span class="keyword">if</span> apt-cache show <span class="string">'default-libmysqlclient-dev'</span> 2&gt;/dev/null | grep -q <span class="string">'^Version:'</span>; <span class="keyword">then</span>     <span class="built_in">echo</span> <span class="string">'default-libmysqlclient-dev'</span>;    <span class="keyword">else</span>     <span class="built_in">echo</span> <span class="string">'libmysqlclient-dev'</span>;    <span class="keyword">fi</span>   )  ;  rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN groupadd --gid 1000 node   &amp;&amp; useradd --uid 1000 --gid node --shell /bin/bash --create-home node</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex   &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span>     94AE36675C464D64BAFA68DD7434390BDBE9B9C5     FD3A5288F042B6850C66B31F09FE44734EB7990E     71DCFD284A79C3B38668286BC97EC7A07EDE3FC1     DD8F2338BAE7501E3DD5AC78C273792F7D83545D     C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8     B9AE9905FFD7803F25714661B63B535A4C206CA9     56730D5401028683275BD23C23EFEFE93C4CFFFE     77984A986EBC2AA786BC0F66B01FBB92821C587A     8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600   ; <span class="keyword">do</span>     gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ||     gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ||     gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ;   <span class="keyword">done</span></span></span><br><span class="line"><span class="bash">ENV NODE_VERSION=8.12.0</span></span><br><span class="line"><span class="bash">RUN ARCH= &amp;&amp; dpkgArch=<span class="string">"<span class="variable">$(dpkg --print-architecture)</span>"</span>   &amp;&amp; <span class="keyword">case</span> <span class="string">"<span class="variable">$&#123;dpkgArch##*-&#125;</span>"</span> <span class="keyword">in</span>     amd64) ARCH=<span class="string">'x64'</span>;;     ppc64el) ARCH=<span class="string">'ppc64le'</span>;;     s390x) ARCH=<span class="string">'s390x'</span>;;     arm64) ARCH=<span class="string">'arm64'</span>;;     armhf) ARCH=<span class="string">'armv7l'</span>;;     i386) ARCH=<span class="string">'x86'</span>;;     *) <span class="built_in">echo</span> <span class="string">"unsupported architecture"</span>; <span class="built_in">exit</span> 1 ;;   <span class="keyword">esac</span>   &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span>   &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/SHASUMS256.txt.asc"</span>   &amp;&amp; gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc   &amp;&amp; grep <span class="string">" node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz\$"</span> SHASUMS256.txt | sha256sum -c -   &amp;&amp; tar -xJf <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner   &amp;&amp; rm <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> SHASUMS256.txt.asc SHASUMS256.txt   &amp;&amp; ln -s /usr/<span class="built_in">local</span>/bin/node /usr/<span class="built_in">local</span>/bin/nodejs</span></span><br><span class="line"><span class="bash">ENV YARN_VERSION=1.9.4</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex   &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span>     6A010C5166006599AA17F08146C2130DFD2497F5   ; <span class="keyword">do</span>     gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ||     gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ||     gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ;   <span class="keyword">done</span>   &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz"</span>   &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc"</span>   &amp;&amp; gpg --batch --verify yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz   &amp;&amp; mkdir -p /opt   &amp;&amp; tar -xzf yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz -C /opt/   &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarn /usr/<span class="built_in">local</span>/bin/yarn   &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarnpkg /usr/<span class="built_in">local</span>/bin/yarnpkg   &amp;&amp; rm yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"node"</span>]</span></span><br><span class="line"><span class="bash">ENV ALINODE_VERSION=3.12.0</span></span><br><span class="line"><span class="bash">ENV ENABLE_NODE_LOG=YES</span></span><br><span class="line"><span class="bash">ENV NODE_LOG_DIR=/tmp</span></span><br><span class="line"><span class="bash">ENV HOME=/root</span></span><br><span class="line"><span class="bash">RUN curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span>   &amp;&amp; curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/SHASUMS256.txt"</span>   &amp;&amp; grep <span class="string">" alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt | sha256sum -c -   &amp;&amp; tar -zxvf <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner   &amp;&amp; rm <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt</span></span><br><span class="line"><span class="bash">RUN ENABLE_NODE_LOG=NO npm install -g @alicloud/agenthub --registry=https://registry.npm.taobao.org</span></span><br><span class="line"><span class="bash">COPY file:2446f9972d7e6dfaebacf7c2defe4a0425a23e4cf98ca598f61840e9f4fe1d67 <span class="keyword">in</span> /root </span></span><br><span class="line"><span class="bash">COPY file:cdecc22ff2ae3835fb36e08a92aa71e8857bc4048dccdae1b6bad0061de3b32f <span class="keyword">in</span> / </span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/start-agenthub.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+<p>虽然还是有点乱，但至少得到了所有配置，接下来我们分析这些配置。</p>
+<h2 id="分析-history-提取最终-Dockerfile"><a href="#分析-history-提取最终-Dockerfile" class="headerlink" title="分析 history 提取最终 Dockerfile"></a>分析 history 提取最终 Dockerfile</h2><p>这里先使用下我写的一个工具，重新得到格式化后的 dockerfile，方便我们分析，这个工具下一篇文章详细介绍。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx dockerfile-from-image registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3 &gt; dockerfile</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS: 不知道 npx 是什么或者 npx 命令无效的同学，请自行百度，这是神器，必须掌握。</p>
+</blockquote>
+<p>得到如下 dockerfile 配置。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:<span class="number">3</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> file:8d73a09e59fe50289a6d0c019302aefe2e00ac6411e82404389c0c83f50cf08a <span class="keyword">in</span> / </span></span><br><span class="line"><span class="bash">CMD [<span class="string">"bash"</span>]</span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		ca-certificates \</span></span><br><span class="line"><span class="bash">		curl \</span></span><br><span class="line"><span class="bash">		netbase \</span></span><br><span class="line"><span class="bash">		wget \</span></span><br><span class="line"><span class="bash">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex; \</span></span><br><span class="line"><span class="bash">	<span class="keyword">if</span> ! <span class="built_in">command</span> -v gpg &gt; /dev/null; <span class="keyword">then</span> \</span></span><br><span class="line"><span class="bash">		apt-get update; \</span></span><br><span class="line"><span class="bash">		apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">			gnupg \</span></span><br><span class="line"><span class="bash">			dirmngr \</span></span><br><span class="line"><span class="bash">		; \</span></span><br><span class="line"><span class="bash">		rm -rf /var/lib/apt/lists/*; \</span></span><br><span class="line"><span class="bash">	<span class="keyword">fi</span></span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		bzr \</span></span><br><span class="line"><span class="bash">		git \</span></span><br><span class="line"><span class="bash">		mercurial \</span></span><br><span class="line"><span class="bash">		openssh-client \</span></span><br><span class="line"><span class="bash">		subversion \</span></span><br><span class="line"><span class="bash">				procps \</span></span><br><span class="line"><span class="bash">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex; \</span></span><br><span class="line"><span class="bash">	apt-get update; \</span></span><br><span class="line"><span class="bash">	apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		autoconf \</span></span><br><span class="line"><span class="bash">		automake \</span></span><br><span class="line"><span class="bash">		bzip2 \</span></span><br><span class="line"><span class="bash">		dpkg-dev \</span></span><br><span class="line"><span class="bash">		file \</span></span><br><span class="line"><span class="bash">		g++ \</span></span><br><span class="line"><span class="bash">		gcc \</span></span><br><span class="line"><span class="bash">		imagemagick \</span></span><br><span class="line"><span class="bash">		libbz2-dev \</span></span><br><span class="line"><span class="bash">		libc6-dev \</span></span><br><span class="line"><span class="bash">		libcurl4-openssl-dev \</span></span><br><span class="line"><span class="bash">		libdb-dev \</span></span><br><span class="line"><span class="bash">		libevent-dev \</span></span><br><span class="line"><span class="bash">		libffi-dev \</span></span><br><span class="line"><span class="bash">		libgdbm-dev \</span></span><br><span class="line"><span class="bash">		libgeoip-dev \</span></span><br><span class="line"><span class="bash">		libglib2.0-dev \</span></span><br><span class="line"><span class="bash">		libjpeg-dev \</span></span><br><span class="line"><span class="bash">		libkrb5-dev \</span></span><br><span class="line"><span class="bash">		liblzma-dev \</span></span><br><span class="line"><span class="bash">		libmagickcore-dev \</span></span><br><span class="line"><span class="bash">		libmagickwand-dev \</span></span><br><span class="line"><span class="bash">		libncurses5-dev \</span></span><br><span class="line"><span class="bash">		libncursesw5-dev \</span></span><br><span class="line"><span class="bash">		libpng-dev \</span></span><br><span class="line"><span class="bash">		libpq-dev \</span></span><br><span class="line"><span class="bash">		libreadline-dev \</span></span><br><span class="line"><span class="bash">		libsqlite3-dev \</span></span><br><span class="line"><span class="bash">		libssl-dev \</span></span><br><span class="line"><span class="bash">		libtool \</span></span><br><span class="line"><span class="bash">		libwebp-dev \</span></span><br><span class="line"><span class="bash">		libxml2-dev \</span></span><br><span class="line"><span class="bash">		libxslt-dev \</span></span><br><span class="line"><span class="bash">		libyaml-dev \</span></span><br><span class="line"><span class="bash">		make \</span></span><br><span class="line"><span class="bash">		patch \</span></span><br><span class="line"><span class="bash">		xz-utils \</span></span><br><span class="line"><span class="bash">		zlib1g-dev \</span></span><br><span class="line"><span class="bash">				$( \</span></span><br><span class="line"><span class="bash">			<span class="keyword">if</span> apt-cache show <span class="string">'default-libmysqlclient-dev'</span> 2&gt;/dev/null | grep -q <span class="string">'^Version:'</span>; <span class="keyword">then</span> \</span></span><br><span class="line"><span class="bash">				<span class="built_in">echo</span> <span class="string">'default-libmysqlclient-dev'</span>; \</span></span><br><span class="line"><span class="bash">			<span class="keyword">else</span> \</span></span><br><span class="line"><span class="bash">				<span class="built_in">echo</span> <span class="string">'libmysqlclient-dev'</span>; \</span></span><br><span class="line"><span class="bash">			<span class="keyword">fi</span> \</span></span><br><span class="line"><span class="bash">		) \</span></span><br><span class="line"><span class="bash">	; \</span></span><br><span class="line"><span class="bash">	rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN groupadd --gid 1000 node \</span></span><br><span class="line"><span class="bash">  &amp;&amp; useradd --uid 1000 --gid node --shell /bin/bash --create-home node</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \</span></span><br><span class="line"><span class="bash">    FD3A5288F042B6850C66B31F09FE44734EB7990E \</span></span><br><span class="line"><span class="bash">    71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \</span></span><br><span class="line"><span class="bash">    DD8F2338BAE7501E3DD5AC78C273792F7D83545D \</span></span><br><span class="line"><span class="bash">    C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \</span></span><br><span class="line"><span class="bash">    B9AE9905FFD7803F25714661B63B535A4C206CA9 \</span></span><br><span class="line"><span class="bash">    56730D5401028683275BD23C23EFEFE93C4CFFFE \</span></span><br><span class="line"><span class="bash">    77984A986EBC2AA786BC0F66B01FBB92821C587A \</span></span><br><span class="line"><span class="bash">    8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \</span></span><br><span class="line"><span class="bash">  ; <span class="keyword">do</span> \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">done</span></span></span><br><span class="line"><span class="bash">ENV NODE_VERSION=8.12.0</span></span><br><span class="line"><span class="bash">RUN ARCH= &amp;&amp; dpkgArch=<span class="string">"<span class="variable">$(dpkg --print-architecture)</span>"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">case</span> <span class="string">"<span class="variable">$&#123;dpkgArch##*-&#125;</span>"</span> <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    amd64) ARCH=<span class="string">'x64'</span>;; \</span></span><br><span class="line"><span class="bash">    ppc64el) ARCH=<span class="string">'ppc64le'</span>;; \</span></span><br><span class="line"><span class="bash">    s390x) ARCH=<span class="string">'s390x'</span>;; \</span></span><br><span class="line"><span class="bash">    arm64) ARCH=<span class="string">'arm64'</span>;; \</span></span><br><span class="line"><span class="bash">    armhf) ARCH=<span class="string">'armv7l'</span>;; \</span></span><br><span class="line"><span class="bash">    i386) ARCH=<span class="string">'x86'</span>;; \</span></span><br><span class="line"><span class="bash">    *) <span class="built_in">echo</span> <span class="string">"unsupported architecture"</span>; <span class="built_in">exit</span> 1 ;; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">esac</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/SHASUMS256.txt.asc"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \</span></span><br><span class="line"><span class="bash">  &amp;&amp; grep <span class="string">" node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz\$"</span> SHASUMS256.txt | sha256sum -c - \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -xJf <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> SHASUMS256.txt.asc SHASUMS256.txt \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /usr/<span class="built_in">local</span>/bin/node /usr/<span class="built_in">local</span>/bin/nodejs</span></span><br><span class="line"><span class="bash">ENV YARN_VERSION=1.9.4</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    6A010C5166006599AA17F08146C2130DFD2497F5 \</span></span><br><span class="line"><span class="bash">  ; <span class="keyword">do</span> \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">done</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; gpg --batch --verify yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz \</span></span><br><span class="line"><span class="bash">  &amp;&amp; mkdir -p /opt \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -xzf yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz -C /opt/ \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarn /usr/<span class="built_in">local</span>/bin/yarn \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarnpkg /usr/<span class="built_in">local</span>/bin/yarnpkg \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"node"</span>]</span></span><br><span class="line"><span class="bash">ENV ALINODE_VERSION=3.12.0</span></span><br><span class="line"><span class="bash">ENV ENABLE_NODE_LOG=YES</span></span><br><span class="line"><span class="bash">ENV NODE_LOG_DIR=/tmp</span></span><br><span class="line"><span class="bash">ENV HOME=/root</span></span><br><span class="line"><span class="bash">RUN curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/SHASUMS256.txt"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; grep <span class="string">" alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt | sha256sum -c - \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -zxvf <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt</span></span><br><span class="line"><span class="bash">RUN ENABLE_NODE_LOG=NO npm install -g @alicloud/agenthub --registry=https://registry.npm.taobao.org</span></span><br><span class="line"><span class="bash">COPY file:2446f9972d7e6dfaebacf7c2defe4a0425a23e4cf98ca598f61840e9f4fe1d67 <span class="keyword">in</span> /root </span></span><br><span class="line"><span class="bash">COPY file:cdecc22ff2ae3835fb36e08a92aa71e8857bc4048dccdae1b6bad0061de3b32f <span class="keyword">in</span> / </span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/start-agenthub.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+<p>这样看就非常清晰了。</p>
+<p>开头的 <code>ADD file:xxx in /</code> 和 <code>CMD [&quot;bash&quot;]</code> 明显就是基础镜像，接着往下看。<br>接下来各种 <code>RUN</code> 安装一大堆开发工具。。<br>直到 <code>RUN groupadd --gid 1000 node \</code> 才是我们熟悉的 node 环境相关的配置。<br>接着往下看，，一脸懵逼，怎么在安装官网 node ？？？不是说好的 alinode 么？<br>我们继续往下看，直到 <code>ENV ALINODE_VERSION=3.12.0</code> 才是我们 alinode 的配置。<br>下面不到10个指令，命令简洁明了，设置相关环境变量，然后从阿里云下载 alinode，解压到 <code>/usr/local</code> 目录。<br>然后是安装 agenthub 接着添加两个文件到 root目录 和 根目录。</p>
+<p>其实是 <code>default.config.js</code> 复制到 <code>/root</code><br>然后是 <code>start-agenthub.sh</code> 复制到 <code>/</code> 并作为 <code>ENTRYPOINT</code> 入口。</p>
+<p>怎么提取这两个文件，下面详细说明，我们先整理 dockerfile。</p>
+<p>从这里看，其实就是最后几条质量有用没其他都是些啥？<br>如果你对 node 镜像熟悉的话，其实不难发现，他是 <code>node:8</code> 的镜像。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx dockerfile-from-image node:8 &gt; dockerfile</span><br></pre></td></tr></table></figure>
+<p>得到</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> file:8d73a09e59fe50289a6d0c019302aefe2e00ac6411e82404389c0c83f50cf08a <span class="keyword">in</span> / </span></span><br><span class="line"><span class="bash">CMD [<span class="string">"bash"</span>]</span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		ca-certificates \</span></span><br><span class="line"><span class="bash">		curl \</span></span><br><span class="line"><span class="bash">		netbase \</span></span><br><span class="line"><span class="bash">		wget \</span></span><br><span class="line"><span class="bash">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex; \</span></span><br><span class="line"><span class="bash">	<span class="keyword">if</span> ! <span class="built_in">command</span> -v gpg &gt; /dev/null; <span class="keyword">then</span> \</span></span><br><span class="line"><span class="bash">		apt-get update; \</span></span><br><span class="line"><span class="bash">		apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">			gnupg \</span></span><br><span class="line"><span class="bash">			dirmngr \</span></span><br><span class="line"><span class="bash">		; \</span></span><br><span class="line"><span class="bash">		rm -rf /var/lib/apt/lists/*; \</span></span><br><span class="line"><span class="bash">	<span class="keyword">fi</span></span></span><br><span class="line"><span class="bash">RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		bzr \</span></span><br><span class="line"><span class="bash">		git \</span></span><br><span class="line"><span class="bash">		mercurial \</span></span><br><span class="line"><span class="bash">		openssh-client \</span></span><br><span class="line"><span class="bash">		subversion \</span></span><br><span class="line"><span class="bash">				procps \</span></span><br><span class="line"><span class="bash">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex; \</span></span><br><span class="line"><span class="bash">	apt-get update; \</span></span><br><span class="line"><span class="bash">	apt-get install -y --no-install-recommends \</span></span><br><span class="line"><span class="bash">		autoconf \</span></span><br><span class="line"><span class="bash">		automake \</span></span><br><span class="line"><span class="bash">		bzip2 \</span></span><br><span class="line"><span class="bash">		dpkg-dev \</span></span><br><span class="line"><span class="bash">		file \</span></span><br><span class="line"><span class="bash">		g++ \</span></span><br><span class="line"><span class="bash">		gcc \</span></span><br><span class="line"><span class="bash">		imagemagick \</span></span><br><span class="line"><span class="bash">		libbz2-dev \</span></span><br><span class="line"><span class="bash">		libc6-dev \</span></span><br><span class="line"><span class="bash">		libcurl4-openssl-dev \</span></span><br><span class="line"><span class="bash">		libdb-dev \</span></span><br><span class="line"><span class="bash">		libevent-dev \</span></span><br><span class="line"><span class="bash">		libffi-dev \</span></span><br><span class="line"><span class="bash">		libgdbm-dev \</span></span><br><span class="line"><span class="bash">		libgeoip-dev \</span></span><br><span class="line"><span class="bash">		libglib2.0-dev \</span></span><br><span class="line"><span class="bash">		libjpeg-dev \</span></span><br><span class="line"><span class="bash">		libkrb5-dev \</span></span><br><span class="line"><span class="bash">		liblzma-dev \</span></span><br><span class="line"><span class="bash">		libmagickcore-dev \</span></span><br><span class="line"><span class="bash">		libmagickwand-dev \</span></span><br><span class="line"><span class="bash">		libncurses5-dev \</span></span><br><span class="line"><span class="bash">		libncursesw5-dev \</span></span><br><span class="line"><span class="bash">		libpng-dev \</span></span><br><span class="line"><span class="bash">		libpq-dev \</span></span><br><span class="line"><span class="bash">		libreadline-dev \</span></span><br><span class="line"><span class="bash">		libsqlite3-dev \</span></span><br><span class="line"><span class="bash">		libssl-dev \</span></span><br><span class="line"><span class="bash">		libtool \</span></span><br><span class="line"><span class="bash">		libwebp-dev \</span></span><br><span class="line"><span class="bash">		libxml2-dev \</span></span><br><span class="line"><span class="bash">		libxslt-dev \</span></span><br><span class="line"><span class="bash">		libyaml-dev \</span></span><br><span class="line"><span class="bash">		make \</span></span><br><span class="line"><span class="bash">		patch \</span></span><br><span class="line"><span class="bash">		xz-utils \</span></span><br><span class="line"><span class="bash">		zlib1g-dev \</span></span><br><span class="line"><span class="bash">				$( \</span></span><br><span class="line"><span class="bash">			<span class="keyword">if</span> apt-cache show <span class="string">'default-libmysqlclient-dev'</span> 2&gt;/dev/null | grep -q <span class="string">'^Version:'</span>; <span class="keyword">then</span> \</span></span><br><span class="line"><span class="bash">				<span class="built_in">echo</span> <span class="string">'default-libmysqlclient-dev'</span>; \</span></span><br><span class="line"><span class="bash">			<span class="keyword">else</span> \</span></span><br><span class="line"><span class="bash">				<span class="built_in">echo</span> <span class="string">'libmysqlclient-dev'</span>; \</span></span><br><span class="line"><span class="bash">			<span class="keyword">fi</span> \</span></span><br><span class="line"><span class="bash">		) \</span></span><br><span class="line"><span class="bash">	; \</span></span><br><span class="line"><span class="bash">	rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash">RUN groupadd --gid 1000 node \</span></span><br><span class="line"><span class="bash">  &amp;&amp; useradd --uid 1000 --gid node --shell /bin/bash --create-home node</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \</span></span><br><span class="line"><span class="bash">    FD3A5288F042B6850C66B31F09FE44734EB7990E \</span></span><br><span class="line"><span class="bash">    71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \</span></span><br><span class="line"><span class="bash">    DD8F2338BAE7501E3DD5AC78C273792F7D83545D \</span></span><br><span class="line"><span class="bash">    C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \</span></span><br><span class="line"><span class="bash">    B9AE9905FFD7803F25714661B63B535A4C206CA9 \</span></span><br><span class="line"><span class="bash">    56730D5401028683275BD23C23EFEFE93C4CFFFE \</span></span><br><span class="line"><span class="bash">    77984A986EBC2AA786BC0F66B01FBB92821C587A \</span></span><br><span class="line"><span class="bash">    8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \</span></span><br><span class="line"><span class="bash">  ; <span class="keyword">do</span> \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">done</span></span></span><br><span class="line"><span class="bash">ENV NODE_VERSION=8.12.0</span></span><br><span class="line"><span class="bash">RUN ARCH= &amp;&amp; dpkgArch=<span class="string">"<span class="variable">$(dpkg --print-architecture)</span>"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">case</span> <span class="string">"<span class="variable">$&#123;dpkgArch##*-&#125;</span>"</span> <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    amd64) ARCH=<span class="string">'x64'</span>;; \</span></span><br><span class="line"><span class="bash">    ppc64el) ARCH=<span class="string">'ppc64le'</span>;; \</span></span><br><span class="line"><span class="bash">    s390x) ARCH=<span class="string">'s390x'</span>;; \</span></span><br><span class="line"><span class="bash">    arm64) ARCH=<span class="string">'arm64'</span>;; \</span></span><br><span class="line"><span class="bash">    armhf) ARCH=<span class="string">'armv7l'</span>;; \</span></span><br><span class="line"><span class="bash">    i386) ARCH=<span class="string">'x86'</span>;; \</span></span><br><span class="line"><span class="bash">    *) <span class="built_in">echo</span> <span class="string">"unsupported architecture"</span>; <span class="built_in">exit</span> 1 ;; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">esac</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://nodejs.org/dist/v<span class="variable">$NODE_VERSION</span>/SHASUMS256.txt.asc"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \</span></span><br><span class="line"><span class="bash">  &amp;&amp; grep <span class="string">" node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz\$"</span> SHASUMS256.txt | sha256sum -c - \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -xJf <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm <span class="string">"node-v<span class="variable">$NODE_VERSION</span>-linux-<span class="variable">$ARCH</span>.tar.xz"</span> SHASUMS256.txt.asc SHASUMS256.txt \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /usr/<span class="built_in">local</span>/bin/node /usr/<span class="built_in">local</span>/bin/nodejs</span></span><br><span class="line"><span class="bash">ENV YARN_VERSION=1.9.4</span></span><br><span class="line"><span class="bash">RUN <span class="built_in">set</span> -ex \</span></span><br><span class="line"><span class="bash">  &amp;&amp; <span class="keyword">for</span> key <span class="keyword">in</span> \</span></span><br><span class="line"><span class="bash">    6A010C5166006599AA17F08146C2130DFD2497F5 \</span></span><br><span class="line"><span class="bash">  ; <span class="keyword">do</span> \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys <span class="string">"<span class="variable">$key</span>"</span> || \</span></span><br><span class="line"><span class="bash">    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys <span class="string">"<span class="variable">$key</span>"</span> ; \</span></span><br><span class="line"><span class="bash">  <span class="keyword">done</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -fsSLO --compressed <span class="string">"https://yarnpkg.com/downloads/<span class="variable">$YARN_VERSION</span>/yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; gpg --batch --verify yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz \</span></span><br><span class="line"><span class="bash">  &amp;&amp; mkdir -p /opt \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -xzf yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz -C /opt/ \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarn /usr/<span class="built_in">local</span>/bin/yarn \</span></span><br><span class="line"><span class="bash">  &amp;&amp; ln -s /opt/yarn-v<span class="variable">$YARN_VERSION</span>/bin/yarnpkg /usr/<span class="built_in">local</span>/bin/yarnpkg \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz.asc yarn-v<span class="variable">$YARN_VERSION</span>.tar.gz</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"node"</span>]</span></span><br></pre></td></tr></table></figure>
+<p>是不是一毛一样？</p>
+<p>所以最终的 Dockerfile 是这样的。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> ALINODE_VERSION=<span class="number">3.12</span>.<span class="number">0</span></span><br><span class="line"><span class="keyword">ENV</span> ENABLE_NODE_LOG=YES</span><br><span class="line"><span class="keyword">ENV</span> NODE_LOG_DIR=/tmp</span><br><span class="line"><span class="keyword">ENV</span> HOME=/root</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; curl -SLO <span class="string">"http://alinode.aliyun.com/dist/new-alinode/v<span class="variable">$ALINODE_VERSION</span>/SHASUMS256.txt"</span> \</span></span><br><span class="line"><span class="bash">  &amp;&amp; grep <span class="string">" alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt | sha256sum -c - \</span></span><br><span class="line"><span class="bash">  &amp;&amp; tar -zxvf <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> -C /usr/<span class="built_in">local</span> --strip-components=1 --no-same-owner \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm <span class="string">"alinode-v<span class="variable">$ALINODE_VERSION</span>-linux-x64.tar.gz"</span> SHASUMS256.txt</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN ENABLE_NODE_LOG=NO npm install -g @alicloud/agenthub --registry=https://registry.npm.taobao.org</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">COPY default.config.js /root</span></span><br><span class="line"><span class="bash">COPY start-agenthub.sh /</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/start-agenthub.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+<p>瞬间明朗了，也知道为什么镜像这么大了。<br><a href="https://github.com/nodejs/docker-node/blob/526c6e618300bdda0da4b3159df682cae83e14aa/8/jessie/Dockerfile" target="_blank" rel="noopener">node:8 Dockerfile</a> 镜像依赖 <code>buildpack-deps:jessie</code>。</p>
+<p>从刚才的配置也看到了，几乎包含了所有开发编译时所需的各种工具。</p>
+<p>那么还有个问题，<code>default.config.js</code>, <code>start-agenthub.sh</code> 怎么提取？</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm -it registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3 cat /start-agenthub.sh &gt; start-agenthub.sh</span><br><span class="line">$ docker run --rm -it registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3 cat /root/default.config.js &gt; default.config.js</span><br></pre></td></tr></table></figure>
+<p>好了 <code>Dockerfile</code>, <code>default.config.js</code>, <code>start-agenthub.sh</code> 都得到了。<br>接着就可以 <code>docker build -t alinode .</code> 编译镜像了。</p>
+<p>当然，你也可以为所欲为，各种魔改。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>我是一个喜欢刨根究底的人，这个事情其实上个月该做的，但各种琐事以及懒惰，拖到这个月才处理。<br>但结果是好的，把事情搞清楚了，以后遇到没有 Dockerfile 的镜像也可以分析出个大概。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>楼教主</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html" title="alinode 官方镜像分析并提取 Dockerfile">http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/alinode/" rel="tag"># alinode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/31/docker-alinode.html" rel="next" title="docker 封装 alinode">
+                <i class="fa fa-chevron-left"></i> docker 封装 alinode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/01/dockerfile-from-image.html" rel="prev" title="从 Docker 镜像中提取 Dockerfile">
+                从 Docker 镜像中提取 Dockerfile <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="//q.qlogo.cn/qqapp/100229475/2EBF2E8D6BCE97787D5F3CDC6DDBECED/160" alt="楼教主">
+            
+              <p class="site-author-name" itemprop="name">楼教主</p>
+              <p class="site-description motion-element" itemprop="description">自称楼教主的前端小学生</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/52cik" title="Weibo &rarr; https://weibo.com/52cik" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/52cik" title="GitHub &rarr; https://github.com/52cik" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:cik520@qq.com" title="E-Mail &rarr; mailto:cik520@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/assets/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网镜像介绍"><span class="nav-number">1.</span> <span class="nav-text">官网镜像介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-image-分析"><span class="nav-number">2.</span> <span class="nav-text">docker image 分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-history"><span class="nav-number">3.</span> <span class="nav-text">docker history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析-history-提取最终-Dockerfile"><span class="nav-number">4.</span> <span class="nav-text">分析 history 提取最终 Dockerfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">楼教主</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3lyfvmugVpBA4ta96278KBKs-gzGzoHsz',
+        appKey: 'YNNL5ccJOrUWkJOOWW6wuzgv',
+        placeholder: 'ヾﾉ≧∀≦)o 来啊，快活啊!',
+        avatar:'robohash',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

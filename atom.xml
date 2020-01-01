@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Web技术试炼地</title>
+  
+  <subtitle>热爱技术的教主大人</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.52cik.com/"/>
+  <updated>2020-01-01T15:05:07.577Z</updated>
+  <id>http://www.52cik.com/</id>
+  
+  <author>
+    <name>楼教主</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的 2019</title>
+    <link href="http://www.52cik.com/2020/01/01/2019.html"/>
+    <id>http://www.52cik.com/2020/01/01/2019.html</id>
+    <published>2020-01-01T15:04:59.000Z</published>
+    <updated>2020-01-01T15:05:07.577Z</updated>
+    
+    <summary type="html">
+    
+      2019年总结
+    
+    </summary>
+    
+      <category term="狂人日妓" scheme="http://www.52cik.com/categories/%E7%8B%82%E4%BA%BA%E6%97%A5%E5%A6%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>让 babel webpack vue 配置文件支持智能提示</title>
+    <link href="http://www.52cik.com/2019/06/21/config-intelli-sense.html"/>
+    <id>http://www.52cik.com/2019/06/21/config-intelli-sense.html</id>
+    <published>2019-06-21T09:40:33.000Z</published>
+    <updated>2020-01-01T15:03:49.157Z</updated>
+    
+    <summary type="html">
+    
+      让 babel webpack vue 配置文件支持智能提示
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+      <category term="ts" scheme="http://www.52cik.com/tags/ts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>&quot;再见\u2018你好\u2019&quot;</title>
+    <link href="http://www.52cik.com/2019/01/01/2018.html"/>
+    <id>http://www.52cik.com/2019/01/01/2018.html</id>
+    <published>2019-01-01T15:20:15.000Z</published>
+    <updated>2020-01-01T15:03:49.155Z</updated>
+    
+    <summary type="html">
+    
+      2018年总结
+    
+    </summary>
+    
+      <category term="狂人日妓" scheme="http://www.52cik.com/categories/%E7%8B%82%E4%BA%BA%E6%97%A5%E5%A6%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>chrome + puppeteer</title>
+    <link href="http://www.52cik.com/2018/12/31/chrome-puppeteer.html"/>
+    <id>http://www.52cik.com/2018/12/31/chrome-puppeteer.html</id>
+    <published>2018-12-31T12:43:20.000Z</published>
+    <updated>2020-01-01T15:03:49.156Z</updated>
+    
+    <summary type="html">
+    
+      puppeteer 借助 chrome 实现 ui
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="chrome" scheme="http://www.52cik.com/tags/chrome/"/>
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node http keep-alive demo</title>
+    <link href="http://www.52cik.com/2018/12/03/node-http-keep-alive-demo.html"/>
+    <id>http://www.52cik.com/2018/12/03/node-http-keep-alive-demo.html</id>
+    <published>2018-12-03T06:25:58.000Z</published>
+    <updated>2020-01-01T15:03:49.164Z</updated>
+    
+    <summary type="html">
+    
+      node http keep-alive demo
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+      <category term="http" scheme="http://www.52cik.com/tags/http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ping 域名</title>
+    <link href="http://www.52cik.com/2018/12/01/ping-host.html"/>
+    <id>http://www.52cik.com/2018/12/01/ping-host.html</id>
+    <published>2018-12-01T13:11:20.000Z</published>
+    <updated>2020-01-01T15:03:49.165Z</updated>
+    
+    <summary type="html">
+    
+      ping 域名
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="http://www.52cik.com/tags/js/"/>
+    
+      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>alinode 新手村生存指南</title>
+    <link href="http://www.52cik.com/2018/10/31/alinode-tutorial.html"/>
+    <id>http://www.52cik.com/2018/10/31/alinode-tutorial.html</id>
+    <published>2018-10-31T15:43:00.000Z</published>
+    <updated>2020-01-01T15:03:49.156Z</updated>
+    
+    <summary type="html">
+    
+      alinode 使用教程
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+      <category term="alinode" scheme="http://www.52cik.com/tags/alinode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过 node 打 patch 破解 mac 应用</title>
+    <link href="http://www.52cik.com/2018/10/07/sizeup-patch.html"/>
+    <id>http://www.52cik.com/2018/10/07/sizeup-patch.html</id>
+    <published>2018-10-07T15:30:00.000Z</published>
+    <updated>2020-01-01T15:03:49.166Z</updated>
+    
+    <summary type="html">
+    
+      通过 node 打 patch 破解 mac 应用
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+      <category term="patch" scheme="http://www.52cik.com/tags/patch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从 Docker 镜像中提取 Dockerfile</title>
+    <link href="http://www.52cik.com/2018/10/01/dockerfile-from-image.html"/>
+    <id>http://www.52cik.com/2018/10/01/dockerfile-from-image.html</id>
+    <published>2018-10-01T14:37:00.000Z</published>
+    <updated>2020-01-01T15:03:49.158Z</updated>
+    
+    <summary type="html">
+    
+      从 Docker 镜像中提取 Dockerfile
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="node" scheme="http://www.52cik.com/tags/node/"/>
+    
+      <category term="docker" scheme="http://www.52cik.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>alinode 官方镜像分析并提取 Dockerfile</title>
+    <link href="http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html"/>
+    <id>http://www.52cik.com/2018/10/01/docker-alinode-dockerfile.html</id>
+    <published>2018-10-01T11:36:00.000Z</published>
+    <updated>2020-01-01T15:03:49.158Z</updated>
+    
+    <summary type="html">
+    
+      alinode 官方镜像分析并提取 Dockerfile
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.52cik.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="docker" scheme="http://www.52cik.com/tags/docker/"/>
+    
+      <category term="alinode" scheme="http://www.52cik.com/tags/alinode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker 封装 alinode</title>
+    <link href="http://www.52cik.com/2018/08/31/docker-alinode.html"/>
+    <id>http://www.52cik.com/2018/08/31/docker-alinode.html</id>
+    <published>2018-08-31T15:14:00.000Z</published>
+    <updated>2020-01-01T15:03:49.158Z</updated>
+    
+    <summary type="html">
+    
+      docker 封装 alinode，自定义需求。
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.52cik.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="docker" scheme="http://www.52cik.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker 上线部署踩坑小记</title>
+    <link href="http://www.52cik.com/2018/08/31/docker-accident.html"/>
+    <id>http://www.52cik.com/2018/08/31/docker-accident.html</id>
+    <published>2018-08-31T13:58:00.000Z</published>
+    <updated>2020-01-01T15:03:49.157Z</updated>
+    
+    <summary type="html">
+    
+      docker 线上部署踩坑记录
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.52cik.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="docker" scheme="http://www.52cik.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Generator 提升 matchAll 体验</title>
+    <link href="http://www.52cik.com/2018/07/31/generator-matchall.html"/>
+    <id>http://www.52cik.com/2018/07/31/generator-matchall.html</id>
+    <published>2018-07-31T06:54:00.000Z</published>
+    <updated>2020-01-01T15:03:49.158Z</updated>
+    
+    <summary type="html">
+    
+      使用 Generator 提升 matchAll 体验
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="http://www.52cik.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Symbol.match 优化正则匹配</title>
+    <link href="http://www.52cik.com/2018/07/29/symbol-match.html"/>
+    <id>http://www.52cik.com/2018/07/29/symbol-match.html</id>
+    <published>2018-07-29T06:34:00.000Z</published>
+    <updated>2020-01-01T15:03:49.166Z</updated>
+    
+    <summary type="html">
+    
+      使用 Symbol.match 优化正则匹配
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="http://www.52cik.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npm 镜像科普</title>
+    <link href="http://www.52cik.com/2018/06/30/npm-mirrors.html"/>
+    <id>http://www.52cik.com/2018/06/30/npm-mirrors.html</id>
+    <published>2018-06-30T13:58:00.000Z</published>
+    <updated>2020-01-01T15:03:49.164Z</updated>
+    
+    <summary type="html">
+    
+      npm 镜像科普，镜像原理科普。
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="npm" scheme="http://www.52cik.com/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Express async 全局错误处理</title>
+    <link href="http://www.52cik.com/2018/06/29/express-async-errors.html"/>
+    <id>http://www.52cik.com/2018/06/29/express-async-errors.html</id>
+    <published>2018-06-29T01:46:00.000Z</published>
+    <updated>2020-01-01T15:03:49.158Z</updated>
+    
+    <summary type="html">
+    
+      在 express 中优雅的使用 async/await 提升开发体验。
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
+    
+      <category term="express" scheme="http://www.52cik.com/tags/express/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>koa2 中的错误处理以及中间件设计原理</title>
+    <link href="http://www.52cik.com/2018/05/27/koa-error.html"/>
+    <id>http://www.52cik.com/2018/05/27/koa-error.html</id>
+    <published>2018-05-27T08:09:00.000Z</published>
+    <updated>2020-01-01T15:03:49.162Z</updated>
+    
+    <summary type="html">
+    
+      koa2 中的错误处理以及中间件设计原理
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
+    
+      <category term="koa" scheme="http://www.52cik.com/tags/koa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>翻译 | Bash 扩展通配符 (ExtGlob)</title>
+    <link href="http://www.52cik.com/2018/05/02/bash-extended-globbing.html"/>
+    <id>http://www.52cik.com/2018/05/02/bash-extended-globbing.html</id>
+    <published>2018-05-01T17:03:00.000Z</published>
+    <updated>2020-01-01T15:03:49.156Z</updated>
+    
+    <summary type="html">
+    
+      Bash 扩展通配符的科普文章
+    
+    </summary>
+    
+      <category term="狂人日妓" scheme="http://www.52cik.com/categories/%E7%8B%82%E4%BA%BA%E6%97%A5%E5%A6%93/"/>
+    
+    
+      <category term="glob" scheme="http://www.52cik.com/tags/glob/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise 并发控制</title>
+    <link href="http://www.52cik.com/2018/04/30/promise-concurrency-limited.html"/>
+    <id>http://www.52cik.com/2018/04/30/promise-concurrency-limited.html</id>
+    <published>2018-04-30T05:44:00.000Z</published>
+    <updated>2020-01-01T15:03:49.165Z</updated>
+    
+    <summary type="html">
+    
+      Promise 并发，往往都直接 `Promise.all` 但如果我想控制并发为 5 怎么破？
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise 错误处理</title>
+    <link href="http://www.52cik.com/2018/04/30/promise-error.html"/>
+    <id>http://www.52cik.com/2018/04/30/promise-error.html</id>
+    <published>2018-04-30T05:42:00.000Z</published>
+    <updated>2020-01-01T15:03:49.165Z</updated>
+    
+    <summary type="html">
+    
+      Promise 为 js 的异步流程控制处理迈出了一大步。
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
+    
+  </entry>
+  
+</feed>
