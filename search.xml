@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[一点 Vue.observable 想法]]></title>
+    <url>%2F2020%2F02%2F29%2Fvue-observable.html</url>
+    <content type="text"><![CDATA[Vue 2.6.0 新增了 Vue.observable api，但最近才去尝试使用它。这东西说新也不新，因为他就是 vue 本身的功能，只是暴露出来，成为新 api 了。在老版本中，直接用 new Vue({ data: {} }) 也一样。]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[我的 2019]]></title>
     <url>%2F2020%2F01%2F01%2F2019.html</url>
     <content type="text"><![CDATA[2018 年一整年折腾的东西比较多，本计划19年深入和扩展的，但公司事业部调整，工作量几乎翻倍，有的时候甚至翻三倍。最直接的体现就是，19年我只写了一篇博客，当然主要是因为懒，有4篇打好了草稿但没写出来，今年哪怕再忙，也要坚持写博客，坚持自己定下的目标。 那么今年我都忙了些啥呢？]]></content>

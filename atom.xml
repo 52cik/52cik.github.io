@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.52cik.com/"/>
-  <updated>2020-01-01T15:05:07.577Z</updated>
+  <updated>2020-02-29T15:41:23.543Z</updated>
   <id>http://www.52cik.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一点 Vue.observable 想法</title>
+    <link href="http://www.52cik.com/2020/02/29/vue-observable.html"/>
+    <id>http://www.52cik.com/2020/02/29/vue-observable.html</id>
+    <published>2020-02-29T15:19:23.000Z</published>
+    <updated>2020-02-29T15:41:23.543Z</updated>
+    
+    <summary type="html">
+    
+      使用Vue.observable实现分页
+    
+    </summary>
+    
+      <category term="vue" scheme="http://www.52cik.com/categories/vue/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>我的 2019</title>
@@ -402,26 +420,6 @@
     <summary type="html">
     
       Promise 并发，往往都直接 `Promise.all` 但如果我想控制并发为 5 怎么破？
-    
-    </summary>
-    
-      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise 错误处理</title>
-    <link href="http://www.52cik.com/2018/04/30/promise-error.html"/>
-    <id>http://www.52cik.com/2018/04/30/promise-error.html</id>
-    <published>2018-04-30T05:42:00.000Z</published>
-    <updated>2020-01-01T15:03:49.165Z</updated>
-    
-    <summary type="html">
-    
-      Promise 为 js 的异步流程控制处理迈出了一大步。
     
     </summary>
     
