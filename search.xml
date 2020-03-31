@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[npm 模块发布到 npm]]></title>
+    <url>%2F2020%2F03%2F31%2Fnpm-publish-to-npm.html</url>
+    <content type="text"><![CDATA[2020年3月16日，GitHub 收购 npm，大概内容如下： Nat Friedman 宣布 GitHub 已签署收购 npm 的协议，并表示 npm 加入 GitHub 后会继续免费提供 public registry 服务。交易完成后，GitHub 的工作重点包括：未来会将 npm 集成至 GitHub 以提升开源软件供应链的安全性，并让用户能够跟踪从 GitHub PR 到修复问题的 npm 软件包版本的更改。]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一点 Vue.observable 想法]]></title>
     <url>%2F2020%2F02%2F29%2Fvue-observable.html</url>
     <content type="text"><![CDATA[Vue 2.6.0 新增了 Vue.observable api，但最近才去尝试使用它。这东西说新也不新，因为他就是 vue 本身的功能，只是暴露出来，成为新 api 了。在老版本中，直接用 new Vue({ data: {} }) 也一样。]]></content>

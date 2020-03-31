@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.52cik.com/"/>
-  <updated>2020-02-29T15:41:23.543Z</updated>
+  <updated>2020-03-31T15:42:10.674Z</updated>
   <id>http://www.52cik.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>npm 模块发布到 npm</title>
+    <link href="http://www.52cik.com/2020/03/31/npm-publish-to-npm.html"/>
+    <id>http://www.52cik.com/2020/03/31/npm-publish-to-npm.html</id>
+    <published>2020-03-31T15:18:40.000Z</published>
+    <updated>2020-03-31T15:42:10.674Z</updated>
+    
+    <summary type="html">
+    
+      npm 模块发布到 npm
+    
+    </summary>
+    
+      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="npm" scheme="http://www.52cik.com/tags/npm/"/>
+    
+  </entry>
   
   <entry>
     <title>一点 Vue.observable 想法</title>
@@ -407,26 +427,6 @@
     
     
       <category term="glob" scheme="http://www.52cik.com/tags/glob/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise 并发控制</title>
-    <link href="http://www.52cik.com/2018/04/30/promise-concurrency-limited.html"/>
-    <id>http://www.52cik.com/2018/04/30/promise-concurrency-limited.html</id>
-    <published>2018-04-30T05:44:00.000Z</published>
-    <updated>2020-01-01T15:03:49.165Z</updated>
-    
-    <summary type="html">
-    
-      Promise 并发，往往都直接 `Promise.all` 但如果我想控制并发为 5 怎么破？
-    
-    </summary>
-    
-      <category term="前端技术" scheme="http://www.52cik.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="promise" scheme="http://www.52cik.com/tags/promise/"/>
     
   </entry>
   
