@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="Web技术试炼地">
 <meta property="og:description" content="npm 模块发布到 npm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-31T15:42:10.674Z">
+<meta property="og:updated_time" content="2020-04-01T03:54:54.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm 模块发布到 npm">
 <meta name="twitter:description" content="npm 模块发布到 npm">
@@ -483,8 +483,8 @@
 <h2 id="情况不妙"><a href="#情况不妙" class="headerlink" title="情况不妙"></a>情况不妙</h2><p>本来是件好事，但我最近写了个新模块，<code>npm publish</code> 的时候发现居然是发到了 GitHub 的 Packages 下。<br>虽然也没啥问题，只是我们安装的时候会从 GitHub 安装，慢一点而已，我安装了下，大概10秒可以安装好，问题不大。</p>
 <p>然后我让我同事试了下，他却死活安装不上，还显示 404<br>这就蛋疼了，为什么我可以安装，他那却不行呢。</p>
 <p>我也不想去研究 npm，就想先发到 npm 上，因为国情问题，我们都用淘宝镜像，所以目前稳妥的方法就是发到 npm 上。<br>谷歌了下，没找到答案，突然想起了个模块 <code>np</code>，这是个规范化模块发布流程的工具，我试了下，成功发到 npm 上了。</p>
-<p>但我不想买次都这么操作一遍，就想一键发到 npm，于是简单调试了下 npm 发布过程。</p>
-<p>简单描述下就是 npm 默认配置是 <code>registry: &#39;https://registry.npmjs.org&#39;</code>，然后会读取 package.json 中的 publishConfig 配置，如果没用就替换为 GitHub 的 registry 地址。</p>
+<p>但我不想每次都这么操作一遍，就想一键发到 npm，于是简单跟踪调试了下 npm 发布过程。</p>
+<p>简单描述下就是 npm 默认配置是 <code>registry: &#39;https://registry.npmjs.org&#39;</code>，然后会读取 package.json 中的 publishConfig 配置，如果没有就替换为 GitHub 的 registry 地址。</p>
 <p>那么事情就简单了。</p>
 <h2 id="添加发布配置"><a href="#添加发布配置" class="headerlink" title="添加发布配置"></a>添加发布配置</h2><p>在 package.json 中加入如下配置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"publishConfig": &#123;</span><br><span class="line">  "registry": "https://registry.npmjs.org",</span><br><span class="line">  "access": "public"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
