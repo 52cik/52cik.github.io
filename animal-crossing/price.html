@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《集合啦！动物森友会》 - 物品价格表</title>
+  <link rel="stylesheet" href="//lib.baomitu.com/bulma/0.8.0/css/bulma.min.css">
+  <style>
+    th + th {
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <section class="hero is-info">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p class="title">集合啦！动物森友会 <small class="subtitle">物品价格表</small></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="margin-top: 40px;">
+    <div class="columns">
+      <div class="column">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th colspan="2" align="center">海鱼类</th>
+            </tr>
+            <tr>
+              <th width="50%">名字</th>
+              <th @click="seaFish.order = -seaFish.order">价格 {{ seaFish.order > 0 ? '↓' : '↑' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it, idx) of seaFishList" :key="it.name">
+              <td>{{ it.name }}</td>
+              <td>{{ it.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="column">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th colspan="2" align="center">河鱼类</th>
+            </tr>
+            <tr>
+              <th width="50%">名字</th>
+              <th @click="riverFish.order = -riverFish.order">价格 {{ riverFish.order > 0 ? '↓' : '↑' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it, idx) of riverFishList" :key="it.name">
+              <td>{{ it.name }}</td>
+              <td>{{ it.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="column">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th colspan="2" align="center">贝壳类</th>
+            </tr>
+            <tr>
+              <th width="50%">名字</th>
+              <th @click="shell.order = -shell.order">价格 {{ shell.order > 0 ? '↓' : '↑' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it, idx) of shellList" :key="it.name">
+              <td>{{ it.name }}</td>
+              <td>{{ it.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="column">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th colspan="2" align="center">昆虫类</th>
+            </tr>
+            <tr>
+              <th width="50%">名字</th>
+              <th @click="insect.order = -insect.order">价格 {{ insect.order > 0 ? '↓' : '↑' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it, idx) of insectList" :key="it.name">
+              <td>{{ it.name }}</td>
+              <td>{{ it.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="column">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th colspan="2" align="center">其他</th>
+            </tr>
+            <tr>
+              <th width="50%">名字</th>
+              <th @click="other.order = -other.order">价格 {{ other.order > 0 ? '↓' : '↑' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it, idx) of otherList" :key="it.name">
+              <td>{{ it.name }}</td>
+              <td>{{ it.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="//lib.baomitu.com/vue/2.6.10/vue.min.js"></script>
+<script>
+const order = (arr, order) => arr.sort((a, b) => order > 0 ? a.price - b.price : b.price - a.price);
+const app = new Vue({
+  el: '#app',
+  data: {
+    seaFish: {
+      order: -1,
+      list: [
+        { name: '竹荚鱼', price: 150 },
+        { name: '鲽鱼', price: 300 },
+        { name: '魷鱼', price: 500 },
+        { name: '海蝴蝶', price: 1000 },
+        { name: '灯笼鱼', price: 2500 },
+        { name: '鲷鱼', price: 3000 },
+        { name: '条石鲷', price: 5000 },
+        { name: '皇带鱼', price: 9000 },
+        { name: '鲈鱼', price: 400 },
+        { name: '鲔鱼', price: 7500 },
+        { name: '矛尾鱼', price: 15000 },
+        { name: '鲟鱼', price: 10000 },
+        { name: '比目鱼', price: 800 },
+        { name: '旗鱼', price: 10000 },
+        { name: '赤鲷', price: 3000 },
+        { name: '五彩鳗', price: 600 },
+        { name: '太平洋桶眼鱼', price: 15000 },
+      ],
+    },
+    riverFish: {
+      order: -1,
+      list: [
+        { name: '鲤鱼', price: 500 },
+        { name: '鲫鱼', price: 160 },
+        { name: '红目鲫', price: 900 },
+        { name: '泥鳅', price: 400 },
+        { name: '黑鲈鱼', price: 400 },
+        { name: '黄鲈鱼', price: 400 },
+        { name: '蓝目太阳鱼', price: 180 },
+        { name: '锦鲤', price: 4000 },
+        { name: '金鱼', price: 1300 },
+        { name: '蝌蚪', price: 100 },
+        { name: '龙睛金鱼', price: 1300 },
+        { name: '溪哥', price: 200 },
+        { name: '兰寿金鱼', price: 4500 },
+        { name: '雅罗鱼', price: 240 },
+        { name: '塘鳢鱼', price: 400 },
+      ],
+    },
+    shell: {
+      order: -1,
+      list: [
+        { name: '珊瑚', price: 500 },
+        { name: '沙钱', price: 120 },
+        { name: '宝螺壳', price: 60 },
+        { name: '蛤蜊', price: 100 },
+        { name: '扇贝克', price: 900 },
+        { name: '海螺壳', price: 700 },
+        { name: '骨螺壳', price: 300 },
+        { name: '钟螺壳', price: 180 },
+      ],
+    },
+    insect: {
+      order: -1,
+      list: [
+        { name: '大蓝闪蝶', price: 4000 },
+        { name: '椿象', price: 1000 },
+        { name: '飞蛾', price: 130 },
+        { name: '寄居蟹', price: 1000 },
+        { name: '海蟑螂', price: 200 },
+        { name: '狼蛛', price: 8000 },
+        { name: '虎甲虫', price: 1500 },
+        { name: '星天牛', price: 350 },
+        { name: '蜜蜂', price: 200 },
+        { name: '蜈蚣', price: 600 },
+        { name: '兰花螳螂', price: 2400 },
+        { name: '瓢虫', price: 200 },
+        { name: '螳螂', price: 430 },
+        { name: '蓑衣虫', price: 600 },
+        { name: '蜗牛', price: 250 },
+        { name: '凤蝶', price: 240 },
+        { name: '白粉蝶', price: 160 },
+        { name: '斑缘点粉蝶', price: 160 },
+        { name: '鼠妇', price: 250 },
+      ],
+    },
+    other: {
+      order: -1,
+      list: [
+        { name: '相同特产的岛', price: 100 },
+        { name: '不同特产的岛', price: 500 },
+        { name: '椰子', price: 250 },
+        { name: '杂草', price: 10 },
+        { name: '春笋', price: 200 },
+        { name: '竹笋', price: 250 },
+        { name: '蜂巢', price: 300 },
+      ],
+    }
+  },
+  computed: {
+    seaFishList() {
+      return order(this.seaFish.list, this.seaFish.order);
+    },
+    riverFishList() {
+      return order(this.riverFish.list, this.riverFish.order);
+    },
+    shellList() {
+      return order(this.shell.list, this.shell.order);
+    },
+    insectList() {
+      return order(this.insect.list, this.insect.order);
+    },
+    otherList() {
+      return order(this.other.list, this.other.order);
+    },
+  },
+});
+</script>
+</body>
+</html>
